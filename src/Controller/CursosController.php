@@ -39,6 +39,7 @@ class CursosController
    }
 
    public function inserir(){
+      
       $novoCurso = new \App\Entities\Curso();
       $novoCurso->setId(0);
       $novoCurso->setNome("JAva Kids");

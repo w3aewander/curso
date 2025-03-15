@@ -14,9 +14,9 @@
 
 /* Estilo do body */
 body {
-    padding-top: 70px;
+    padding-top: 90px;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #b3a9a9;
 }
 
 /* Estilo do header */
@@ -33,6 +33,7 @@ header {
 /* Estilo do main */
 main {
     margin: 20px;
+    padding: 20px 20px;
 }   
 /* Estilo do footer */
 footer {
@@ -43,4 +44,9 @@ footer {
     color: #fff;
     padding: 10px 0;
     text-align: center;
+}
+
+.container{
+    background-color: #fafafa;
+    padding-top: 20px;
 }

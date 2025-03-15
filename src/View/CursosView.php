@@ -14,35 +14,65 @@
 
     public function listar($cursos){
 
-        
-        $header = file_get_contents("src/templates/header.phtml");
+       
+        ob_start();
+        require_once __DIR__ . "/../templates/header.phtml";
 
-        $navbar = file_get_contents( "src/templates/navbar.phtml");
+        $html = "<div class='container'>";
 
-        $html = "<table class='table table-hover table-striped'>";
-        $html .= "<tr><th>Id</th><th>Nome</th><th>Carga Horária</th></tr>";
+        //card para a view curso
+        $html .= "<div class='card'>";
+        $html .= "<div class='card-header'>";
+        $html .= "<div class='card-title'> Administrar cadastro de cursos </div>";
+        $html .= "</div>";
+    
+        $html .= "<div class='card-body'>";
 
+
+        ob_start();
+        $html .= require_once(__DIR__ ."/../templates/cursoForm.phtml");
+
+        $html .= "<table class='table table-hover table-striped'>";
+        $html .= "<tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Carga Horária</th>
+                    <th colspan='2'>Operações</th>
+                </tr>";
+
+       
         foreach ( $cursos as $curso ) {
             
             $html .= "<tr>";
             $html .= "<td>{$curso->getId()}</td>";
             $html .= "<td>{$curso->getNome()}</td>";
             $html .= "<td>{$curso->getCargaHoraria()}</td>";
+
+            $html .= "<td><a class='btn btn-sm btn-warning' href='#'><i class='fa fa-edit'></i> Editar</a></td>";
+            $html .= "<td><a class='btn btn-sm btn-danger' href='#'><i class='fa fa-trash'></i> Excluir</a></td>";
             $html .= "</tr>";
         }
 
-        $html .= "</table>";
+        $html .= "</table>";        
+        
+        $html .= "</div>";
 
-        $opts = array(
-            "http" => array(
-                "method" => "GET",
-                "header" => "Content-Type: text/html"  
-            )
-        );
+        $html .= "</div> <!-- final do card-body -->";
 
-        $footer = file_get_contents("src/templates/footer.phtml", false, stream_context_create($opts));
+        $html .= "<div class='card-footer'>
+                    <div class='text-start'>#Registros: " . count($cursos) . "</div>
+                  </div>";
 
-        echo $header.$navbar.$html.$footer;
+        $html .= "</div> <!-- final do card -->";
+
+        $html .= "</div> <!-- final do container -->";
+        
+        ob_end_flush();
+        echo $html;
+
+        require_once __DIR__ ."/../templates/footer.phtml";
+
+
 
    }
 }
