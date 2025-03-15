@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'wander/curso',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'fortawesome/font-awesome' => array(
+            'pretty_version' => '6.7.2',
+            'version' => '6.7.2.0',
+            'reference' => 'af620534bfc3c2d4cbefcfeec29603bbe7809e64',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../fortawesome/font-awesome',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'twitter/bootstrap' => array(
+            'pretty_version' => 'v5.3.3',
+            'version' => '5.3.3.0',
+            'reference' => '6e1f75f420f68e1d52733b8e407fc7c3766c9dba',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twitter/bootstrap',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'wander/curso' => array(
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

@@ -1,0 +1,19 @@
+{
+    "name": "wander/curso",
+    "description": "Primeiro Projeto",
+    "require": {
+        "twitter/bootstrap": "^5.3",
+        "fortawesome/font-awesome": "^6.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Wanderlei Silva do Carmo",
+            "email": "wander.silva@gmail.com"
+        }
+    ]
+}
