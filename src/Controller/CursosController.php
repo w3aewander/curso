@@ -27,17 +27,18 @@ class CursosController
   
    }
 
-   public function listar()
+   public function index()
    {
-      $cursos = [];
-
-      foreach ($this->cursoModel->listar() as $curso) {
-         $cursos[] = $curso;
-      }
-
-      return  $this->cursosView->listar($cursos);
+      return $this->cursosView->listar($this->cursoModel->listar());
+      
    }
 
+   public function listar()
+   {
+      return $this->cursosView->listar($this->cursoModel->listar());
+   }  
+
+   
    public function inserir(){
       
       $novoCurso = new \App\Entities\Curso();
