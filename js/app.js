@@ -7,22 +7,14 @@
   */
 
 
- function salvarCurso(obj){
-    var curso = {
-        nome: obj.nome,
-        descricao: obj.descricao,
-        cargaHoraria: obj.cargaHoraria,
-        valor: obj.valor
-    };
+function editarCurso(){
     
-    fetch('http://localhost/cursos', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(curso)
-    }).catch(function(err){
-        console.error('Erro ao salvar curso', err);
-    });
+    alert('editar curso');
+}
+
+ function salvarCurso(){
+    
+    alert('salvar curso');
+
  }
 

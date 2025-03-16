@@ -23,24 +23,18 @@ class CursosController
    {
       $this->cursoModel = new CursoModel;
       $this->cursosView = new CursosView();
-
-  
    }
 
    public function index()
    {
-      return $this->cursosView->listar($this->cursoModel->listar());
-      
+      $cursos = json_decode($this->cursoModel->listar());
+      return $this->cursosView->listar($cursos);
    }
 
-   public function listar()
-   {
-      return $this->cursosView->listar($this->cursoModel->listar());
-   }  
 
-   
-   public function inserir(){
-      
+   public function inserir()
+   {
+
       $novoCurso = new \App\Entities\Curso();
       $novoCurso->setId(0);
       $novoCurso->setNome("JAva Kids");
@@ -48,6 +42,5 @@ class CursosController
 
       $dao = new \App\Model\DAO();
       $dao->inserirCurso($novoCurso);
-
    }
 }

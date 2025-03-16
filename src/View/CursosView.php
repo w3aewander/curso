@@ -1,21 +1,20 @@
 <?php
+
 /**
  * dfadsfafda
  */
 
- namespace App\View;
+namespace App\View;
 
-use App\Controller\CursosController;
+use App\Traits\TraitViewRender;
 
- class CursosView {
+class CursosView
+{
 
+    use TraitViewRender;
 
-    public function listar(){
-
-    }
-
-    public function index(){
-        $cursosController = new CursosController();
-        $cursosController->index();
+    public function listar($cursos)
+    {
+        return $this->render(__DIR__ . '/../templates/cursosView.phtml', $cursos);
     }
 }

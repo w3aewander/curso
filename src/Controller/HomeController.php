@@ -22,7 +22,7 @@ class HomeController
 
    public function index()
    {
-      $this->homeView->render( __DIR__ . '/../templates/homeView.phtml' );
+      return $this->homeView->render( __DIR__ . '/../templates/homeView.phtml' );
    }
 
 

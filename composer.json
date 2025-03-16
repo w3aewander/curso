@@ -3,7 +3,10 @@
     "description": "Primeiro Projeto",
     "require": {
         "twitter/bootstrap": "^5.3",
-        "fortawesome/font-awesome": "^6.7"
+        "fortawesome/font-awesome": "^6.7",
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.7",
+        "php-di/php-di": "^7.0"
     },
     "autoload": {
         "psr-4": {
