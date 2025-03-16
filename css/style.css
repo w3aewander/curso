@@ -28,6 +28,7 @@ header {
     color: #fff;
     padding: 10px 0;
     text-align: center;
+    z-index: 9999;
 }
 
 /* Estilo do main */
@@ -36,7 +37,8 @@ main {
     padding: 20px 20px;
     height: 200vh;
     background-color: #fff;
-}   
+}
+
 /* Estilo do footer */
 footer {
     position: fixed;
@@ -46,9 +48,93 @@ footer {
     color: #fff;
     padding: 10px 0;
     text-align: center;
+    z-index: 9999;
 }
 
-.container{
+
+
+.container {
     background-color: #fafafa;
     padding-top: 20px;
+}
+
+.topo-header {
+    padding: 10px 10px;
+    height: 55px;
+}
+
+
+.topo-header-text {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+}
+
+.bg-banner-home {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.text-banner-home {
+    position: relative;
+    display: block;
+    
+    font-size: .9rem;
+    font-weight: bold;
+    text-align: start;
+    padding: 10px;
+    z-index: 998; /* menor que os outros elementos */
+}
+.text-banner-home h1 {
+    position: relative;
+    top: 120px;
+    color: #fff;
+    left: -310px;
+    font-size: 2.1rem;
+    font-weight: bold;
+    text-align: start;
+    padding: 10px;
+}
+
+.text-banner-home h2 {
+    position: relative;
+    display: block;
+    left: -310px;
+    top: 90px;
+    font-size: .9rem;
+    font-weight: bold;
+    text-align: start;
+    padding: 10px;
+
+}
+
+.banner-home {
+    position: relative;
+    height: 300px;
+    margin-bottom: 20px;
+    background-image: url('../img/banner_home.png'), url('../img/banner_home_fundo.png');
+    background-size: 30%, cover;
+    background-position: top right, top left ;
+    background-repeat: no-repeat, no-repeat;
+    z-index: 1000; 
+}
+
+/* Ajuste para elementos dentro do banner */
+.banner-home > * {
+    position: relative;
+    z-index: 999; /* menor que o z-index do banner */
+}
+
+
+.boxes {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    display: inline-flex;
+    max-height: 120px;
+    min-height: 120px;
+    min-width: 150px;
+    max-width: 150px;
 }
