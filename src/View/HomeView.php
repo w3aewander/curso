@@ -18,4 +18,9 @@ class HomeView
     {
         return $this->render(__DIR__ . '/../templates/homeView.phtml');
     }
+
+    public function teste()
+    {
+        return $this->render(__DIR__ . '/../templates/testeView.phtml');
+    }
 }

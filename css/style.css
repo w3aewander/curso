@@ -154,7 +154,7 @@ footer {
 
 /* Estilo personalizado para tooltips */
 .tippy-box[data-theme~='custom'] {
-    background-color: rgba(11, 9, 113, 0.95);
+    background-color: rgba(213, 207, 180, 0.95);
     color: #ffffff;
 
     font-family: 'Lucida Sans', sans-serif;

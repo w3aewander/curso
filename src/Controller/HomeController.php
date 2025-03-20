@@ -25,5 +25,10 @@ class HomeController
       return $this->homeView->render( __DIR__ . '/../templates/homeView.phtml' );
    }
 
+   public function teste(): mixed
+   {
+      return $this->homeView->render( __DIR__ . '/../templates/testeView.phtml', ["escola"=>"Escola de Programação"] );
+   }
+
 
 }

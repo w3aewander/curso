@@ -43,6 +43,19 @@ $app->get('/', function (Request $request, Response $response) {
     return $response;
 });
 
+
+$app->get('/teste', function (Request $request, Response $response) {
+    $controller = new \App\Controller\HomeController();
+    $content = $controller->teste();
+    
+    if ($content === null) {
+        $content = ''; // Fallback para conteúdo vazio
+    }
+    
+    $response->getBody()->write($content);
+    return $response;
+});
+
 $app->get('/cursos', function (Request $request, Response $response) {
     $controller = new \App\Controller\CursosController();
     $content = $controller->index();
