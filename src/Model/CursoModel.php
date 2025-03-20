@@ -8,23 +8,39 @@
 
 namespace App\Model;
 
-use App\Entities\Curso;
+use App\Entities\Curso as Curso;
 use App\Model\DAO;
+use Slim\App;
 
 class CursoModel
 {
 
-    protected $curso;
     protected $dao;
 
-    public function listar()
+    public function __construct()
     {
         $this->dao = new CursoDAO();
-        $cursos = $this->dao->listar();
-        return $cursos;
     }
 
-    public function incluir() {}
+    public function listar()
+    {        
+        return  $this->dao->listar();
+    }
+
+    public function exibir(int $id)
+    {        
+        return $this->dao->exibir($id);
+    }   
+
+    public function incluir(Curso $curso)
+    {
+        return $this->dao->inserir($curso);
+    }
+
+    public function atualizar(Curso $curso, int $id)
+    {        
+        return $this->dao->atualizar($curso, $id);
+    }   
 
     public function excluir() {}
 }

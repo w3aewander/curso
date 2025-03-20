@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursos</title>
     <link rel="stylesheet" href="vendor/twitter/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/fortawesome/font-awesome/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    
-    <header>
-        <div class="d-flex flex-column align-items-start topo-header">
-            <div class="logo">
-                <div class="topo-header-text">Descrição/Identificação</div>
+
+    <head>
+        <!-- SweetAlert2 CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
+        <!-- SweetAlert2 JS -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+        <!-- ...existing code... -->
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://unpkg.com/tippy.js@6"></script>
+        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/themes/light.css" />
+
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+
+    <body>
+
+        <header>
+            <div class="d-flex flex-column align-items-start topo-header">
+                <div class="logo">
+                    <div class="topo-header-text">Descrição/Identificação</div>
+                </div>
+                <small>Slogan</small>
             </div>
-            <small>Slogan</small>
-        </div>
-    </header>
-    <?php require_once __DIR__  .'/navbar.phtml'; ?>
-    <main class="container">
-                
-        
-    
+            <?php require_once __DIR__  . '/navbar.phtml'; ?>
+        </header>
+        <main class="container">

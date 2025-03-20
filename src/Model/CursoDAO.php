@@ -12,15 +12,17 @@ use App\Persistence\Conexao;
 	public function inserir(\App\Entities\Curso $curso):bool {
 		$sql = "INSERT INTO cursos (nome, carga_horaria) VALUES (:nome, :carga_horaria)";
         $stmt = Conexao::conexao()->prepare($sql);
-        $stmt->bindValue(':nome', $curso->getNome());
-        $stmt->bindValue(':carga_horaria', $curso->getCargaHoraria());
+        $stmt->bindParam(':nome', $curso->getNome());
+        $stmt->bindParam(':carga_horaria', $curso->getCargaHoraria());
+        
         return $stmt->execute();
+        
 	}
 
 	public function excluir(int $id) : bool {
 		$sql = "DELETE FROM cursos WHERE id = :id";
         $stmt = Conexao::conexao()->prepare($sql);
-        $stmt->bindValue(':id', $id);
+        $stmt->bindParam(':id', $id);
         return $stmt->execute();    
 	}
 
@@ -28,9 +30,9 @@ use App\Persistence\Conexao;
 
 		$sql = "UPDATE cursos SET nome = :nome, carga_horaria = :carga_horaria WHERE id = :id";
         $stmt = Conexao::conexao()->prepare($sql);
-        $stmt->bindValue(':id', $curso->getId());
-        $stmt->bindValue(':nome', $curso->getNome());
-        $stmt->bindValue(':carga_horaria', $curso->getCargaHoraria());
+        $stmt->bindParam(':id', $curso->getId());
+        $stmt->bindParam(':nome', $curso->getNome());
+        $stmt->bindParam(':carga_horaria', $curso->getCargaHoraria());
         return $stmt->execute();
 	}
 
@@ -45,13 +47,14 @@ use App\Persistence\Conexao;
         while($row = $stmt->fetch(\PDO::FETCH_OBJ)){
             $cursos[] = $row;
         }
+        
         //retornar json        
         return json_encode($cursos);	}
 
 	public function exibir(int $id): mixed {
 		$sql = "SELECT * FROM cursos WHERE id = :id";
         $stmt = Conexao::conexao()->prepare($sql);
-        $stmt->bindValue(':id', $id);
+        $stmt->bindParam(':id', $id);
         
         $stmt->execute();
 
@@ -60,9 +63,11 @@ use App\Persistence\Conexao;
 
 	public function pesquisarPorId($id): mixed{
 		// Implementation here
+        return null;
 	}
 
 	public function pesquisarPeloNome($nome):mixed {
 		// Implementation here
+        return null;
 	}
  }

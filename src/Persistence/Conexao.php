@@ -26,7 +26,7 @@ class Conexao
         //Parametros de conexão mais comuns
         $options = [];
 
-        //Singleton
+        //Padrão de projeto - Singleton
         if (!self::$conexao) {
             //criar uma conexão MySQL usando o PDF
             self::$conexao  = new PDO($json->dsn, $json->user, $json->pass, $options);
@@ -34,4 +34,6 @@ class Conexao
 
         return self::$conexao;
     }
+
+    
 }

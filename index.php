@@ -67,6 +67,43 @@ $app->get('/cursos/listar', function (Request $request, Response $response) {
     return $response;
 });
 
+//Rota para editar exibir um curso
+$app->get('/cursos/{id}/exibir', function (Request $request, Response $response, $args) {
+
+    $controller = new \App\Controller\CursosController();
+    $content = $controller->exibir($args['id']);
+
+        
+    if ($content === null) {
+        $content = ''; // Fallback para conteúdo vazio
+    }
+    
+    //transformar em json
+    $json = json_encode($content);
+
+    //adicionar ao corpo da resposta
+    $response->getBody()->write($json);
+
+    //adicionar cabeçalho
+    return $response->withHeader('Content-Type', 'application/json');
+});
+
+
+// Rota para incluir um curso
+$app->post('/cursos/salvar', function (Request $request, Response $response) {
+    $controller = new \App\Controller\CursosController();
+    $content = $controller->salvar($request->getParsedBody());
+    
+    if ($content === null) {
+        $content = ''; // Fallback para conteúdo vazio
+    }
+    
+    $content = json_encode($content);
+
+    $response->getBody()->write($content);
+    return $response->withHeader('Content-Type', 'application/json');
+});
+
 // Tratamento de erros
 $app->addErrorMiddleware(true, true, true);
 

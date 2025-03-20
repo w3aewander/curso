@@ -4,6 +4,10 @@
     </div>
 
     <div class="card-body p-0">
+
+
+        <?php require_once 'src/templates/cursoForm.phtml'; ?>
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -21,26 +25,39 @@
                     </tr>
                 <?php else: ?>
 
-                <?php foreach ($cursos as $curso) : ?>
-                    <tr>
-                        <td><?= $curso->id ?></td>
-                        <td><?= $curso->nome ?></td>
-                        <td><?= $curso->carga_horaria ?></td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info btn-sm" onclick="editarCurso(<?= $curso->id ?>)">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="excluirCurso(<?= $curso->id ?>)">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+                    <?php foreach ($cursos as $curso) : ?>
+                        <tr>
+                            <td><?= $curso->id ?></td>
+                            <td><?= $curso->nome ?></td>
+                            <td><?= $curso->carga_horaria ?></td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-info btn-sm" title="Visualizar materiais do curso" onclick="detalheCurso(<?= $curso->id ?>)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-warning btn-sm" title="Editar dados do curso" onclick="editarCurso(<?= $curso->id ?>)">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" title="Excluir curso" onclick="excluirCurso(<?= $curso->id ?>)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
             </tbody>
 
-            <?php endif; ?>
+        <?php endif; ?>
+
+        <tfoot>
+            <tr>
+                <th colspan="4">
+
+                    <i class="fas fa-number"></i> Registros: <?= count($cursos) ?>
+
+                </th>
+            </tr>
+        </tfoot>
 
         </table>
 

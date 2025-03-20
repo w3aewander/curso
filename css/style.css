@@ -14,19 +14,22 @@
 
 /* Estilo do body */
 body {
-    padding-top: 70px;
+    padding-top: 130px;
     font-family: Arial, sans-serif;
     background-color: #b3a9a9;
 }
+
+
 
 /* Estilo do header */
 header {
     position: fixed;
     top: 0;
     width: 100%;
+    height: 120px;
     background-color: #333;
     color: #fff;
-    padding: 10px 0;
+    padding: 0 0;
     text-align: center;
     z-index: 9999;
 }
@@ -36,13 +39,13 @@ main {
     margin: 20px;
     padding: 20px 20px;
     height: 200vh;
-    background-color: #fff;
+    background-color: #c21111;
 }
 
 /* Estilo do footer */
 footer {
-    position: fixed;
-    bottom: 0;
+    position: relative;
+
     width: 100%;
     background-color: #333;
     color: #fff;
@@ -51,7 +54,12 @@ footer {
     z-index: 9999;
 }
 
-
+.navbar {
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    bottom: 0;
+}
 
 .container {
     background-color: #fafafa;
@@ -76,18 +84,20 @@ footer {
 .text-banner-home {
     position: relative;
     display: block;
-    
+
     font-size: .9rem;
     font-weight: bold;
     text-align: start;
     padding: 10px;
-    z-index: 998; /* menor que os outros elementos */
+    z-index: 998;
+    /* menor que os outros elementos */
 }
+
 .text-banner-home h1 {
     position: relative;
-    top: 120px;
+    top: 90px;
     color: #fff;
-    left: -310px;
+    left: -90px;
     font-size: 2.1rem;
     font-weight: bold;
     text-align: start;
@@ -97,8 +107,8 @@ footer {
 .text-banner-home h2 {
     position: relative;
     display: block;
-    left: -310px;
-    top: 90px;
+    left: -160px;
+    top: 60px;
     font-size: .9rem;
     font-weight: bold;
     text-align: start;
@@ -108,19 +118,21 @@ footer {
 
 .banner-home {
     position: relative;
-    height: 300px;
+    height: 250px;
     margin-bottom: 20px;
-    background-image: url('../img/banner_home.png'), url('../img/banner_home_fundo.png');
-    background-size: 30%, cover;
-    background-position: top right, top left ;
+    background-image: url('../img/banner_home2.png'), url('../img/banner_home_fundo.png');
+    background-size: 66%, cover;
+    background-position: bottom right, bottom center;
+    background-position-x: 150%, center;
     background-repeat: no-repeat, no-repeat;
-    z-index: 1000; 
+    z-index: 1000;
 }
 
 /* Ajuste para elementos dentro do banner */
-.banner-home > * {
+.banner-home>* {
     position: relative;
-    z-index: 999; /* menor que o z-index do banner */
+    z-index: 999;
+    /* menor que o z-index do banner */
 }
 
 
@@ -137,4 +149,555 @@ footer {
     min-height: 120px;
     min-width: 150px;
     max-width: 150px;
+}
+
+
+/* Estilo personalizado para tooltips */
+.tippy-box[data-theme~='custom'] {
+    background-color: rgba(11, 9, 113, 0.95);
+    color: #ffffff;
+
+    font-family: 'Lucida Sans', sans-serif;
+    font-size: 0.9rem;
+    padding: 4px 6px;
+    max-width: 200px !important;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='top']>.tippy-arrow::before {
+    border-top-color: rgba(11, 9, 113, 0.95);
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='bottom']>.tippy-arrow::before {
+    border-bottom-color: rgba(11, 9, 113, 0.95);
+}
+
+/* Media Queries para Responsividade */
+/* iPhone 12 Pro */
+@media screen and (width: 390px) and (height: 944px) {
+    .banner-home {
+        height: 200px;
+        background-size: 80%, cover;
+        background-position-x: 162px, center;
+        margin-bottom: 15px;
+    }
+
+    .text-banner-home h1 {
+        font-size: 1.4rem;
+        left: 10px;
+        top: 50px;
+        text-align: left;
+        padding: 5px;
+    }
+
+    .text-banner-home h2 {
+        font-size: 0.9rem;
+        left: 10px;
+        top: 30px;
+        text-align: left;
+        padding: 5px;
+    }
+
+    /* Ajustes adicionais para melhor visualização */
+    body {
+        padding-top: 45px;
+    }
+
+    header {
+        height: 100px;
+    }
+
+    .topo-header {
+        height: 45px;
+    }
+
+    .container {
+        padding: 10px 5px;
+    }
+}
+
+
+
+/* Galaxy A51/71 */
+@media screen and (width: 412px) and (height: 914px) {
+    .banner-home {
+        height: 200px;
+        background-size: 80%, cover;
+        background-position-x: 162px, center;
+        margin-bottom: 15px;
+    }
+
+    .text-banner-home h1 {
+        font-size: 1.4rem;
+        left: 10px;
+        top: 50px;
+        text-align: left;
+        padding: 5px;
+    }
+
+    .text-banner-home h2 {
+        font-size: 0.9rem;
+        left: 10px;
+        top: 30px;
+        text-align: left;
+        padding: 5px;
+    }
+
+    /* Ajustes adicionais para melhor visualização */
+    body {
+        padding-top: 45px;
+    }
+
+    header {
+        height: 100px;
+    }
+
+    .topo-header {
+        height: 45px;
+    }
+
+    .container {
+        padding: 10px 5px;
+    }
+}
+
+/* Tablets e dispositivos médios (768px e acima) */
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 55px;
+    }
+
+    .banner-home {
+        height: 250px;
+        background-size: 60%, cover;
+        background-position-x: 140%;
+    }
+
+    .text-banner-home h1 {
+        font-size: 1.8rem;
+        left: -50px;
+        top: 80px;
+    }
+
+    .text-banner-home h2 {
+        left: -50px;
+        top: 60px;
+    }
+
+    .boxes {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .box {
+        min-width: 200px;
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+
+/* Dispositivos móveis (576px e abaixo) */
+@media screen and (max-width: 576px) {
+    body {
+        padding-top: 50px;
+    }
+
+    header {
+        padding: 5px 0;
+    }
+
+    .banner-home {
+        height: 250px;
+        background-size: 80%, cover;
+        background-position-x: 210%;
+    }
+
+    .text-banner-home h1 {
+        font-size: 1.5rem;
+        left: 0;
+        top: 60px;
+        text-align: center;
+    }
+
+    .text-banner-home h2 {
+        left: 0;
+        top: 40px;
+        text-align: center;
+    }
+
+    .boxes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .box {
+        min-width: 100%;
+        margin: 5px 0;
+    }
+
+    .topo-header-text {
+        font-size: 1rem;
+    }
+
+    main {
+        margin: 5px;
+        padding: 10px;
+    }
+
+    .container {
+        padding-top: 10px;
+    }
+}
+
+/* Dispositivos muito pequenos */
+@media screen and (max-width: 320px) {
+    .text-banner-home h1 {
+        font-size: 1.2rem;
+    }
+
+    .text-banner-home h2 {
+        font-size: 0.8rem;
+    }
+
+    .banner-home {
+        height: 180px;
+    }
+}
+
+/* iPhone SE, iPhone 6, 7, 8 e similares (375x667) */
+@media screen and (width: 375px) and (height: 667px) {
+    .banner-home {
+        height: 200px;
+        background-size: 80%, cover;
+        background-position-x: 162px, center;
+        margin-bottom: 15px;
+    }
+
+    .text-banner-home h1 {
+        font-size: 1.4rem;
+        left: 10px;
+        top: 50px;
+        text-align: left;
+        padding: 5px;
+    }
+
+    .text-banner-home h2 {
+        font-size: 0.9rem;
+        left: 10px;
+        top: 30px;
+        text-align: left;
+        padding: 5px;
+    }
+
+    /* Ajustes adicionais para melhor visualização */
+    body {
+        padding-top: 45px;
+    }
+
+    header {
+        height: 100px;
+    }
+
+    .topo-header {
+        height: 45px;
+    }
+
+    .container {
+        padding: 10px 5px;
+    }
+}
+
+
+/* iPhone SE, iPhone 6, 7, 8 e similares (375x667) */
+@media screen and (width: 360px) and (height: 740px) {
+    .banner-home {
+        height: 200px;
+        background-size: 80%, cover;
+        background-position-x: 162px, center;
+        margin-bottom: 15px;
+    }
+
+    .text-banner-home h1 {
+        font-size: 1.4rem;
+        left: 10px;
+        top: 50px;
+        text-align: left;
+        padding: 5px;
+    }
+
+    .text-banner-home h2 {
+        font-size: 0.9rem;
+        left: 10px;
+        top: 30px;
+        text-align: left;
+        padding: 5px;
+    }
+
+    /* Ajustes adicionais para melhor visualização */
+    body {
+        padding-top: 45px;
+    }
+
+    header {
+        height: 100px;
+    }
+
+    .topo-header {
+        height: 45px;
+    }
+
+    .container {
+        padding: 10px 5px;
+    }
+}
+
+/* iPhone SE, iPhone 6, 7, 8 e similares (375x667) */
+@media screen and (width: 667px) and (height: 375px) {
+    .banner-home {
+        height: 200px;
+        background-size: 60%, cover;
+        background-position-x: 452px, center;
+        margin-bottom: 15px;
+    }
+
+    .text-banner-home h1 {
+        font-size: 1.4rem;
+        left: -100px;
+        top: 50px;
+        text-align: left;
+        padding: 5px;
+    }
+
+    .text-banner-home h2 {
+        font-size: 0.9rem;
+        left: -100px;
+        top: 30px;
+        text-align: left;
+        padding: 5px;
+    }
+
+    /* Ajustes adicionais para melhor visualização */
+    body {
+        padding-top: 45px;
+    }
+
+    header {
+        height: 100px;
+    }
+
+    .topo-header {
+        height: 45px;
+    }
+
+    .container {
+        padding: 10px 5px;
+    }
+}
+
+
+/* Telas grandes e monitores */
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
+    .banner-home {
+        height: 250px;
+        background-size: 40%, cover;
+        background-position-x: 350px, center;
+    }
+
+    .boxes {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .box {
+        max-width: 200px;
+    }
+}
+
+/* Ajustes para modo escuro */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .container {
+        background-color: #444;
+    }
+
+    main {
+        background-color: #222;
+    }
+}
+
+/* Ajustes para preferências de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* TVs e Telas Extra Grandes */
+@media screen and (min-width: 1920px) {
+    body {
+        padding-top: 150px;
+        font-size: 18px;
+        /* Fonte base maior para TVs */
+    }
+
+    .container {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 30px;
+    }
+
+    .banner-home {
+        height: 500px;
+        background-size: 30%, cover;
+        margin-bottom: 40px;
+    }
+
+    .text-banner-home h1 {
+        font-size: 3.5rem;
+        left: -120px;
+        top: 150px;
+    }
+
+    .text-banner-home h2 {
+        font-size: 1.8rem;
+        left: -120px;
+        top: 100px;
+    }
+
+    .boxes {
+        max-width: 1800px;
+        gap: 20px;
+        padding: 30px;
+    }
+
+    .box {
+        max-width: 300px;
+        min-height: 180px;
+        padding: 20px;
+    }
+
+    header {
+        height: 150px;
+    }
+
+    .topo-header {
+        height: 70px;
+    }
+
+    .topo-header-text {
+        font-size: 2rem;
+    }
+
+    .navbar {
+        height: 70px;
+    }
+}
+
+/* TVs 4K e Telas Ultra HD */
+@media screen and (min-width: 3840px) {
+    body {
+        padding-top: 200px;
+        font-size: 24px;
+    }
+
+    .container {
+        max-width: 3000px;
+    }
+
+    .banner-home {
+        height: 800px;
+        background-size: 25%, cover;
+    }
+
+    .text-banner-home h1 {
+        font-size: 5rem;
+        left: -150px;
+        top: 250px;
+    }
+
+    .text-banner-home h2 {
+        font-size: 2.5rem;
+        left: -150px;
+        top: 200px;
+    }
+
+    .boxes {
+        max-width: 3000px;
+        gap: 40px;
+    }
+
+    .box {
+        max-width: 500px;
+        min-height: 300px;
+    }
+
+    header {
+        height: 200px;
+    }
+
+    .topo-header {
+        height: 100px;
+    }
+
+    .topo-header-text {
+        font-size: 3rem;
+    }
+
+    .navbar {
+        height: 100px;
+    }
+}
+
+/* Ajuste para relação de aspecto de TV */
+@media screen and (min-aspect-ratio: 16/9) {
+    .banner-home {
+        background-position: bottom right, center;
+    }
+
+    .boxes {
+        justify-content: space-evenly;
+    }
+}
+
+/* Otimização para modo TV (quando disponível) */
+@media tv {
+    * {
+        /* Reduz motion para evitar retenção de imagem */
+        transition: none !important;
+        animation: none !important;
+    }
+
+    /* Aumenta contraste para melhor visibilidade */
+    body {
+        background-color: #000;
+        color: #fff;
+    }
+
+    .container {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    /* Evita overscan em TVs antigas */
+    .banner-home,
+    .boxes,
+    .container {
+        margin: 5% auto;
+        width: 90%;
+    }
 }

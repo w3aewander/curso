@@ -1,9 +1,9 @@
 <!-- formulário para administração do cadastro do curso -->
 
-<form action="" method="" role="form" class="container gap-1 my-2 py-2">
+<form id="formCurso" class="container gap-1 my-2 py-2">
     <div class="form-group">
         <label for="id">ID</label>
-        <input type="text" name="id" id="id" class="form-control">
+        <input type="text" name="id" id="id" class="form-control" value="0" readonly>
     </div>
     <div class="form-group">
         <label for="nome">Nome</label>
@@ -14,8 +14,163 @@
         <input type="text" name="carga_horaria" id="carga_horaria" class="form-control">
     </div>
     <div class="well well-sm py-2 my-2 bg-white">
-        <button class="btn btn-primary btn-sm'><i class='fa fa-file" onclick="editarCurso();"></i> Novo</button>
-        <button class="btn btn-danger btn-sm'><i class='fa fa-save" onclick="salvarCurso();"></i> Salvar</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="novoCurso();">
+            <i class="fa fa-file"></i> Novo
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" onclick="salvarCurso(this.form);">
+            <i class="fa fa-save"></i> Salvar
+        </button>
     </div>
-
 </form>
+
+<script>
+    function novoCurso() {
+        document.getElementById('id').value = 0;
+        document.getElementById('nome').value = '';
+        document.getElementById('carga_horaria').value = '';
+    }
+
+    function editarCurso(id) {
+        Swal.fire({
+            title: 'Editar Curso',
+            text: 'Deseja editar este curso?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                //requisição ajax para carregar os dados do curso
+
+                fetch(`http://localhost/curso/cursos/${id}/exibir`)
+
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro ao carregar o curso');
+                        }
+                        return response;
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: error.message,
+                            confirmButtonColor: '#3085d6'
+                        });
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('id').value = data.id;
+                        document.getElementById('nome').value = data.nome;
+                        document.getElementById('carga_horaria').value = data.carga_horaria;
+                    });
+
+
+                Swal.fire(
+                    'Pronto!',
+                    'O curso foi carregado para edição.',
+                    'success'
+                )
+            }
+        })
+    }
+
+    function salvarCurso() {
+        const form = document.getElementById('formCurso');
+        const nome = document.getElementById('nome').value;
+        const cargaHoraria = document.getElementById('carga_horaria').value;
+
+        if (!nome || !cargaHoraria) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Por favor, preencha todos os campos!',
+                confirmButtonColor: '#3085d6'
+            });
+            return;
+        }
+
+        Swal.fire({
+            title: 'Salvando...',
+            text: 'Aguarde enquanto salvamos o curso',
+            icon: 'info',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+
+                // Lógica de salvamento aqui
+                fetch('http://localhost/curso/cursos/salvar', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: document.getElementById('id').value,
+                            nome: nome,
+                            carga_horaria: cargaHoraria
+                        })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro ao salvar o curso');
+                        }
+
+                        setTimeout(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Sucesso!',
+                                text: 'Curso salvo com sucesso!',
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            form.reset();
+                        }, 1500);
+
+                        return response;
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: error.message,
+                            confirmButtonColor: '#3085d6'
+                        });
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                    });
+
+
+            }
+        });
+    }
+
+    // Função para confirmar exclusão
+    function confirmarExclusao(id) {
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: "Esta ação não poderá ser revertida!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Lógica de exclusão aqui
+                Swal.fire(
+                    'Excluído!',
+                    'O curso foi excluído com sucesso.',
+                    'success'
+                )
+            }
+        })
+    }
+</script>

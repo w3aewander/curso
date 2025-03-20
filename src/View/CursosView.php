@@ -15,6 +15,7 @@ class CursosView
 
     public function listar($cursos)
     {
-        return $this->render(__DIR__ . '/../templates/cursosView.phtml', $cursos);
+        
+        return $this->render(__DIR__ . '/../templates/cursosView.phtml', ["cursos"=>$cursos]);
     }
 }

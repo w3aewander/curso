@@ -1,13 +1,41 @@
 </main>
 
-<footer>
-        <p class="text-center">
-            Todos os direitos reservados - <?=date('Y')?>
-        </p>
+<footer class="bg-dark text-light position-relative" style="padding: 20px 0;">
+    <p class="text-center">
+        Todos os direitos reservados - <?= date('Y') ?>
+    </p>
 </footer>
 
 
+
 <script src="vendor/twitter/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializa Tippy em todos os elementos com título
+        tippy('[title]', {
+            theme: 'custom',
+            animation: 'scale',
+            duration: [200, 100],
+            placement: 'top',
+            arrow: true,
+            delay: [100, 100],
+            touch: ['hold', 500],
+            maxWidth: 300,
+            color: '#007bff',
+            textColor: '#fff',
+            interactive: true
+        });
+        
+        // Remove o título nativo para evitar duplicação
+        document.querySelectorAll('[title]').forEach(el => {
+            el.dataset.tippyContent = el.title;
+            el.removeAttribute('title');
+        });
+    });
+</script>
+
 <script src="js/script.js"></script>
 </body>
+
 </html>
