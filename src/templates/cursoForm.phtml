@@ -103,17 +103,14 @@
             didOpen: () => {
                 Swal.showLoading();
 
+                let form = document.getElementById('formCurso');
+                let formData = new FormData(form);
+
+
                 // Lógica de salvamento aqui
                 fetch('http://localhost/curso/cursos/salvar', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            id: document.getElementById('id').value,
-                            nome: nome,
-                            carga_horaria: cargaHoraria
-                        })
+                        body: new URLSearchParams(formData)
                     })
                     .then(response => {
                         if (!response.ok) {

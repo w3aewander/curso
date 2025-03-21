@@ -16,6 +16,8 @@ class HomeView
 
     public function index()
     {
+
+
         return $this->render(__DIR__ . '/../templates/homeView.phtml');
     }
 

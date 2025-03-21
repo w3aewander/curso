@@ -27,8 +27,14 @@ $app = AppFactory::create();
 // Adicionar middleware para parsing do body
 $app->addBodyParsingMiddleware();
 
+//obter a url atual do script
+//$base_dir =   '/'. trim(str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']), '/');
+
+//die($base_dir);
+
+$base_dir = '/curso';
 // Definir base path se necessário
-$app->setBasePath('/curso');
+$app->setBasePath($base_dir);
 
 // Rotas
 $app->get('/', function (Request $request, Response $response) {

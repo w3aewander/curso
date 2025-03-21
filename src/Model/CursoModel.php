@@ -34,6 +34,7 @@ class CursoModel
 
     public function incluir(Curso $curso)
     {
+        
         return $this->dao->inserir($curso);
     }
 

@@ -40,22 +40,29 @@ class CursosController
 
    public function salvar()
    {
-      //obter os dados do formulário
-      $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
-      $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-      $cargaHoraria = filter_input(INPUT_POST, 'carga_horaria', FILTER_SANITIZE_NUMBER_INT);
+      //receber os dados do formulário
+      $curso = $this->obterDadosDoFormulario(); 
 
+      
+      //verficase se o $id é diferente de vazio e diferente de zero
+      if (!empty($curso->getId()) && $curso->getId() != 0) {
+         return $this->cursoModel->atualizar($curso, $curso->getId());
+      } else {
+         return $this->cursoModel->incluir($curso);
+      }
+   }
+
+   public function obterDadosDoFormulario()
+   {
+      $id = filter_input(INPUT_POST, 'id') ?? 0;
+      $nome = filter_input(INPUT_POST, 'nome');
+      $cargaHoraria = filter_input(INPUT_POST, 'carga_horaria');
 
       $curso = new \App\Entities\Curso();
+      $curso->setId($id);
       $curso->setNome($nome);
-      $curso->setCargaHoraria($cargaHoraria);     
+      $curso->setCargaHoraria($cargaHoraria);
 
-      //verficase se o $id é diferente de vazio e diferente de zero
-      if (!empty($id) && $id != 0) {
-         $curso->setId($id);
-         return $this->cursoModel->atualizar($curso, $id);
-      } else {
-         return $this->cursoModel->inserir($curso);
-      }
+      return $curso;
    }
 }
