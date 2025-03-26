@@ -37,6 +37,7 @@ class ComposerStaticInit2249456a86d4781f5c9bb1e90378705b
         ),
         'F' => 
         array (
+            'Fpdf\\' => 5,
             'Fig\\Http\\Message\\' => 17,
             'FastRoute\\' => 10,
         ),
@@ -88,6 +89,10 @@ class ComposerStaticInit2249456a86d4781f5c9bb1e90378705b
         'Invoker\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-di/invoker/src',
+        ),
+        'Fpdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fpdf/fpdf/src/Fpdf',
         ),
         'Fig\\Http\\Message\\' => 
         array (

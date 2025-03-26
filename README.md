@@ -22,9 +22,50 @@ O Sistema de Gerenciamento de Cursos é uma aplicação web desenvolvida com pro
         "slim/slim": "^4.0",
         "slim/psr7": "^1.6",
         "php-di/php-di": "^7.0",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "fpdf/fpdf": "^1.85",
+        "tippy.js/dist": "^6.3",
+        "sweetalert2": "^11.0"
     }
 }
+```
+
+## 📋 Dependências Extras
+
+### FPDF para Geração de PDF
+O sistema utiliza FPDF para geração de relatórios em PDF. Para instalar:
+
+```bash
+composer require setasign/fpdf
+```
+
+### Bibliotecas JavaScript
+Para funcionalidades do frontend, são necessárias:
+
+1. **SweetAlert2** - Caixas de diálogo modernas
+```html
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+```
+
+2. **Tippy.js** - Tooltips elegantes
+```html
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/themes/light.css">
+```
+
+### Extensões PHP Necessárias
+Verifique se as seguintes extensões PHP estão instaladas:
+
+```bash
+sudo apt-get install php8.x-gd    # Para manipulação de imagens no PDF
+sudo apt-get install php8.x-mbstring  # Para suporte a caracteres UTF-8
+sudo systemctl restart apache2
+```
+
+Para verificar as extensões instaladas:
+```bash
+php -m | grep -E 'gd|mbstring|pdo'
 ```
 
 ## 🎯 Funcionalidades

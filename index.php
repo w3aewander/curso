@@ -123,6 +123,18 @@ $app->post('/cursos/salvar', function (Request $request, Response $response) {
     return $response->withHeader('Content-Type', 'application/json');
 });
 
+$app->get('/cursos/imprimir/pdf', function (Request $request, Response $response) {
+    
+    $controller = new \App\Controller\CursosController();
+    $content = $controller->imprimirParaPDF();
+    
+    if ($content === null) {
+        $content = ''; // Fallback para conteúdo vazio
+    }
+    
+    $response->getBody()->write($content);
+    return $response;
+}); 
 // Tratamento de erros
 $app->addErrorMiddleware(true, true, true);
 
