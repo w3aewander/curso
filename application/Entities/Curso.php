@@ -5,7 +5,7 @@
  */
 namespace App\Entities;
 
-class Curso{
+class Curso {
 
     private $id;
     private $nome;

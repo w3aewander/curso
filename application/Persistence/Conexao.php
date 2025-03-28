@@ -12,9 +12,12 @@ namespace App\Persistence;
 
 use PDO;
 
+// Pattern Singleton
+// https://www.php.net/manual/pt_BR/pdo.connections.php
 class Conexao
 {
 
+  
   private static $conexao;
 
   public static function conexao()

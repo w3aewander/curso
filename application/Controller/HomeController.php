@@ -30,5 +30,9 @@ class HomeController
       return $this->homeView->render( __DIR__ . '/../templates/testeView.phtml', ["escola"=>"Escola de Programação"] );
    }
 
+   public function notFound()
+   {
+      return $this->homeView->render( __DIR__ . '/../templates/404View.phtml' );
+   }
 
 }

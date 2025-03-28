@@ -13,6 +13,7 @@ class CursosView
 
     use TraitViewRender;
 
+    //Injeção de dependência
     public function listar($cursos)
     {
         
