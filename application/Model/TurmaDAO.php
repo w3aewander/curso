@@ -28,22 +28,21 @@ class TurmaDAO extends DAO implements IDAO{
             $resultado = $stmt->execute();
 
         }
-    }
+    
         catch (\PDOException $e) {
             // Log do erro e rollback em caso de exceção
             error_log("Exceção ao inserir turma: " . $e->getMessage());
             return false;
         }
     }
-    // Verifica se a inserção foi bem sucedida
-    if ($resultado) {                
-        error_log("Turma inserida com sucesso. ID: " . Conexao::conexao()->lastInsertId());
-        return true;
+    public function listar(): string {
+        $sql = "SELECT * FROM turmas";
+        $stmt = Conexao::conexao()->prepare($sql);
+        $stmt->execute();
+        return json_encode($stmt->fetchAll(\PDO::FETCH_ASSOC));
     }
-    // Se chegou aqui, houve erro   
-    error_log("Erro ao inserir turma: " . implode(", ", $stmt->errorInfo()));
-    return false;
-
 }
+
+
 
 
