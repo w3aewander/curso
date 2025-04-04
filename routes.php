@@ -12,6 +12,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use DI\Container;
 
+
+use Dotenv\Dotenv;
+
+// Carregar variáveis de ambiente
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 // Criar container DI
 $container = new Container();
 AppFactory::setContainer($container);
@@ -22,9 +29,10 @@ $app = AppFactory::create();
 // Adicionar middleware para parsing do body
 $app->addBodyParsingMiddleware();
 
-$base_dir = '/escola';
+//pegar o diretório base da aplicação
+$base_dir =  $_ENV['APP_BASE_DIR'] ?? '';
 
-// Definir base path se necessário
+// Definir base path se necessário  
 $app->setBasePath($base_dir);
 
 // Rotas
@@ -55,6 +63,19 @@ $app->get('/teste', function (Request $request, Response $response) {
 $app->get('/cursos', function (Request $request, Response $response) {
     $controller = new \App\Controller\CursosController();
     $content = $controller->index();
+    
+    if ($content === null) {
+        $content = ''; // Fallback para conteúdo vazio
+    }
+    
+    $response->getBody()->write($content);
+    return $response;
+});
+
+//rota para salvar um curso
+$app->post('/cursos/salvar', function (Request $request, Response $response) {
+    $controller = new \App\Controller\CursosController();
+    $content = $controller->salvar($request);
     
     if ($content === null) {
         $content = ''; // Fallback para conteúdo vazio

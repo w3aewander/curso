@@ -24,6 +24,9 @@
 </form>
 
 <script>
+
+    const APP_BASE_DIR = "<?=$_ENV['APP_BASE_DIR'] ?>";
+
     function novoCurso() {
         document.getElementById('id').value = 0;
         document.getElementById('nome').value = '';
@@ -46,7 +49,7 @@
 
                 //requisição ajax para carregar os dados do curso
 
-                fetch(`http://localhost/curso/cursos/${id}/exibir`)
+                fetch(`${APP_BASE_DIR}/cursos/${id}/exibir`)
 
                     .then(response => {
                         if (!response.ok) {
@@ -108,11 +111,14 @@
 
 
                 // Lógica de salvamento aqui
-                fetch('http://localhost/curso/cursos/salvar', {
+                fetch(`${APP_BASE_DIR}/cursos/salvar`, {
                         method: 'POST',
                         body: new URLSearchParams(formData)
                     })
                     .then(response => {
+
+                        
+                        
                         if (!response.ok) {
                             throw new Error('Erro ao salvar o curso');
                         }

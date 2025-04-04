@@ -15,8 +15,11 @@ use App\Persistence\Conexao;
 use \Fpdf\Fpdf;
 
 use Exception;
+use Slim\Psr7\Factory\RequestFactory;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
 
-class CursosController
+class CursosController extends Controller
 {
 
    public $cursosView;
@@ -24,6 +27,7 @@ class CursosController
 
    public function __construct()
    {
+      parent::__construct();
       $this->cursoModel = new CursoModel;
       $this->cursosView = new CursosView();
    }
@@ -41,18 +45,45 @@ class CursosController
       return $curso;
    }
 
-   public function salvar()
+   public function salvar(Request $request): mixed
    {
+      //criar um objeto de resposta
+      $response = new Response();
+
+      //verifica se o id � diferente de vazio e diferente de zero
+      $id = filter_input(INPUT_POST, 'id') ?? 0;
+
+
       //receber os dados do formulário
       $curso = $this->obterDadosDoFormulario(); 
 
-      
+        
       //verficase se o $id � diferente de vazio e diferente de zero
       if (!empty($curso->getId()) && $curso->getId() != 0) {
-         return $this->cursoModel->atualizar($curso, $curso->getId());
+         //atualizar o curso
+         if ( $this->cursoModel->atualizar($curso, $curso->getId()) ){
+            $resp = [
+               'status' => 'success',
+               'message' => 'Curso atualizado com sucesso.',
+               'curso' => $curso
+            ]; 
+         }
+                  
+         
       } else {
-         return $this->cursoModel->incluir($curso);
+         //incluir o curso
+         if ( $this->cursoModel->incluir($curso) ){
+            $resp = [
+               'status' => 'success',
+               'message' => 'Curso incluído com sucesso.',
+               'curso' => $curso
+            ]; 
+         } 
       }
+
+      //resornar um  response.ok
+      return json_encode($resp);
+      
    }
 
    public function obterDadosDoFormulario()

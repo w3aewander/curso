@@ -16,6 +16,7 @@ trait TraitViewRender
 
     public function render($view, $data = [])
     {
+        
         if (file_exists($view)) {
             extract($data);
             ob_start();
