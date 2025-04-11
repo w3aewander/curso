@@ -15,6 +15,7 @@ use App\Persistence\Conexao;
 use \Fpdf\Fpdf;
 
 use Exception;
+
 use Slim\Psr7\Factory\RequestFactory;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
