@@ -1,5 +1,0 @@
-{
-    "dsn":"mysql:host=localhost:3306;dbname=curso",
-    "user":"curso",
-    "pass":"Abc@123"
-}
