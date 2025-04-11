@@ -10,19 +10,22 @@ namespace App\Controller;
 
 use App\View\HomeView;
 
-class HomeController
+class HomeController extends Controller
 {
 
    public $homeView;
 
    public function __construct()
    {
+      parent::__construct();
+      
       $this->homeView = new HomeView();
    }
 
    public function index()
    {
-      return $this->homeView->render( __DIR__ . '/../templates/homeView.phtml' );
+     
+      return $this->homeView->render( __DIR__ . '/../templates/homeView.phtml', ["menu" => $this->menu] );
    }
 
    public function teste(): mixed
