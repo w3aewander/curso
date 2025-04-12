@@ -101,6 +101,10 @@ curso/
 ```bash
 git clone https://seu-repositorio/curso.git
 cd curso
+
+cp .env-dist .env
+cp config/config.json-dist /config/config.json
+
 ```
 
 2. Instale as dependências
