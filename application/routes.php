@@ -48,6 +48,19 @@ $app->get('/', function (Request $request, Response $response) {
     return $response;
 });
 
+$app->get('/login', function (Request $request, Response $response) {
+    $controller = new \App\Controller\LoginController();
+    $content = $controller->index();
+    
+    if ($content === null) {
+        $content = ''; // Fallback para conteúdo vazio
+    }
+    
+    $response->getBody()->write($content);
+    return $response;
+});
+
+
 $app->get('/teste', function (Request $request, Response $response) {
     $controller = new \App\Controller\HomeController();
     $content = $controller->teste();
