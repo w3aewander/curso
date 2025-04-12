@@ -2,7 +2,16 @@
  * css - folha de estilo em cascata
  /*
 
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lucida+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lucida+Sans+Typewriter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lucida+Sans+Unicode:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lucida+Grande:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lucida+Sans+Regular:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lucida+Sans+Typewriter:wght@400;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css')
+@import url('https://unpkg.com/tippy.js@6/dist/tippy.css')
+@import url('https://unpkg.com/tippy.js@6/themes/light.css')
 
 
 /* Reset CSS */
