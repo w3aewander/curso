@@ -22,7 +22,7 @@ class Conexao
 
   public static function conexao()
     {
-        $jsonFile = __DIR__ . '/../../config/config.json';
+        $jsonFile = __DIR__ . '/../config/config.json';
 
         $json = json_decode(file_get_contents($jsonFile));
 
