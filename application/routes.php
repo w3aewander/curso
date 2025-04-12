@@ -16,7 +16,7 @@ use DI\Container;
 use Dotenv\Dotenv;
 
 // Carregar variáveis de ambiente
-$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
 // Criar container DI
