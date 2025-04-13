@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('content') 
 
-<h1>Login - com tempalete Blade</h1>
+@section('content')
+    <!-- O Vue será montado aqui -->
 
-
-
+        <HelloWorld msg="Olá" />
+   
 @endsection

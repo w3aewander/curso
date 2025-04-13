@@ -1,6 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const path = require('path')
-const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -19,14 +19,10 @@ module.exports = defineConfig({
         '@': path.resolve(__dirname, 'application/src')
       }
     },
-    // plugins: [
-    //   new CopyPlugin({
-    //     patterns: [
-    //       {
-    //         from: path.resolve(__dirname, 'public/*'),
-    //         to: path.resolve(__dirname, 'public')
-    //       }
-    //     ]})
-    //   ]
-  },
+    plugins: [
+      new WebpackManifestPlugin({
+        fileName: 'js/manifest.json'
+      })
+    ]
+  }
 })

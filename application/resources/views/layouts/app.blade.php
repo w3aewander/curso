@@ -1,17 +1,34 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Curso App') }}</title>
+
+    <!-- Estilos -->
+    <link href="{{ mix('css/index.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Container Vue -->
+    <div id="app">
+        @yield('content')
+    </div>
+
+    <!-- Scripts carregados no final para melhor performance -->
+    <script src="{{ mix('js/chunk-vendors.js') }}"></script>
+    <script src="{{ mix('js/index.js') }}"></script>
+
+    <!-- Debug para desenvolvimento -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM carregado');
+            console.log('Vue assets:', {
+                vendors: '{{ mix("js/chunk-vendors.js") }}',
+                app: '{{ mix("js/index.js") }}',
+                css: '{{ mix("css/index.css") }}'
+            });
+        });
+    </script>
+</body>
 </html>

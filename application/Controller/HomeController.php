@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Controlador da classe home.
  * @author Wanderlei Silva do Carmo <wander.silva@gmail.com>
@@ -18,24 +19,26 @@ class HomeController extends Controller
    public function __construct()
    {
       parent::__construct();
-      
-      $this->homeView = new HomeView();
+
+      //$this->homeView = new HomeView();
    }
 
    public function index()
    {
-     
-      return $this->homeView->render( __DIR__ . '/../templates/homeView.phtml', ["menu" => $this->menu] );
+
+      //return $this->homeView->render( __DIR__ . '/../templates/homeView.phtml', ["menu" => $this->menu] );
+      // Renderizar o template de login
+      $view = $this->view->make('login');
+      return $view->render();
    }
 
    public function teste(): mixed
    {
-      return $this->homeView->render( __DIR__ . '/../templates/testeView.phtml', ["escola"=>"Escola de Programação"] );
+      return $this->homeView->render(__DIR__ . '/../templates/testeView.phtml', ["escola" => "Escola de Programação"]);
    }
 
    public function notFound()
    {
-      return $this->homeView->render( __DIR__ . '/../templates/404View.phtml' );
+      return $this->homeView->render(__DIR__ . '/../templates/404View.phtml');
    }
-
 }

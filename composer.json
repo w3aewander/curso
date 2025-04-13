@@ -12,6 +12,9 @@
         "illuminate/view": "^12.8"
     },
     "autoload": {
+        "files": [
+            "application/helpers/functions.php"
+        ],
         "psr-4": {
             "App\\": "application/"
         }
